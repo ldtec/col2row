@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>www.jb51.net jQuery行列转置</title>
+  <script src="http://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
+  <style type="text/css">
+    table
+    {
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+    table th
+    {
+      background: orange;
+      color: #fff;
+      padding: 10px;
+    }
+    table td
+    {
+      padding: 10px;
+    }
+    table.vertical
+    {
+      -webkit-writing-mode: vertical-lr;
+      -moz-writing-mode: vertical-lr;
+      -ms-writing-mode: tb-lr;
+      writing-mode: vertical-lr;
+    }
+    table.vertical th, table.vertical td
+    {
+      width: 100px;
+      height: 14px;
+    }
+    table.vertical div
+    {
+      width: 100px;
+      -webkit-writing-mode: horizontal-tb;
+      -moz-writing-mode: horizontal-tb;
+      -ms-writing-mode: lr-tb;
+      writing-mode: horizontal-tb;
+    }
+  </style>
+  <script type="text/javascript">
+    var flag = false;
+    //注：多次点击后，内面文字会包裹多层div，尚无好的解决方法
+    function test(){
+      if(!flag){
+        $('table').addClass('vertical').find('th, td').wrapInner('<div>');
+        //$('table').addClass('vertical');//数字会变垂直，不能用
+      }else{
+        $('table').removeClass('vertical');
+      }
+      flag=!flag;
+    }
+  </script>
+</head>
+<body>
+  <table>
+   <tr>
+    <th>车型</th>
+    <th>动力</th>
+    <th>续航</th>
+    <th>发动机</th>
+   </tr>
+   <tr>
+    <td>桑塔纳</td>
+    <td>1.4</td>
+    <td>500km</td>
+    <td>一代</td>
+   </tr>
+   <tr>
+    <td>宝来</td>
+    <td>1.5</td>
+    <td>600km</td>
+    <td>二代</td>
+   </tr>
+   <tr>
+    <td>迈腾</td>
+    <td>1.6</td>
+    <td>700km</td>
+    <td>三代</td>
+    </tr>
+   <tr>
+    <td>辉腾</td>
+    <td>1.7</td>
+    <td>800km</td>
+    <td>四代</td>
+   </tr>
+   
+  </table>
+  <input type="button" onclick="test()" value="行列转置" />
+</body>
+</html>
